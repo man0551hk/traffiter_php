@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/interface1.php';
 require_once __DIR__ . '/function.php';
+$user_id = 1;
 ?>
 <style>
 .wf-container:before,.wf-container:after {
@@ -13,7 +14,20 @@ require_once __DIR__ . '/function.php';
 .wf-column {
     float: left;
 }
+.heart:hover .fa-heart-o,
+.heart .fa-heart {
+    display: none;
+}
+.heart:hover .fa-heart {
+    display: inline;
+}
 </style>
+<script>
+function addFavorite(locationID, userID) 
+{
+
+}
+</script>
 <section id="features" class="sections">
   <div class="container">
     <div class="wf-container">
@@ -34,6 +48,10 @@ require_once __DIR__ . '/function.php';
                 '<div class="content">' + 
                   '<b>' + val.name + '</b>' +
                   '<p>' + val.countryName + ' ' + val.areaName + ' ' + val.districtName + '</p>' +
+                  '<a href = "#" class = "heart" onclick = "addFavorite(' + val.locationID + ',' + <?php echo $user_id; ?> + ')">' + 
+                  '<i class="fa fa-heart-o"></i>'+
+                  '<i class="fa fa-heart"></i>'+
+                  '</a>' + 
                 '</div>' + 
               '</div>';
             items.push(item);

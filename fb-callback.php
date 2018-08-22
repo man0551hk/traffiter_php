@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/vendor/autoload.php';
 $app_id = '1558355577612796'; // 把 {app_id} 換成你的應用程式編號
 $app_secret = '3b791c12364219428b76909e95391f5d';  // 把 {app_secret} 換成你的應用程式密鑰
@@ -37,15 +38,15 @@ $fb = new Facebook\Facebook([
   }
   
   // Logged in
-  echo '<h3>Access Token</h3>';
+  // echo '<h3>Access Token</h3>';
   
   // The OAuth 2.0 client handler helps us manage access tokens
   $oAuth2Client = $fb->getOAuth2Client();
   
   // Get the access token metadata from /debug_token
   $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-  echo '<h3>Metadata</h3>';
-  var_dump($tokenMetadata);
+  // echo '<h3>Metadata</h3>';
+  // var_dump($tokenMetadata);
   
   // Validation (these will throw FacebookSDKException's when they fail)
   $tokenMetadata->validateAppId($app_id); // Replace {app-id} with your app id
@@ -63,13 +64,17 @@ $fb = new Facebook\Facebook([
     }
   
     echo '<h3>Long-lived</h3>';
-    var_dump($accessToken->getValue());
+    // var_dump($accessToken->getValue());
+    print_r ($accessToken->getValue());
+    print_r ($result);
+
+    // $response = $fb->get('/me?locale=en_US&fields=name,email');
+    // $userNode = $response->getGraphUser();
+    // var_dump(
+    //   $userNode->getField('email'), $userNode['email']
+    // );
   }
   
   $_SESSION['fb_access_token'] = (string) $accessToken;
-  
-  // User is logged in with a long-lived access token.
-  // You can redirect them to a members-only page.
-  //header('Location: https://example.com/members.php');
 
-  ?>
+?>

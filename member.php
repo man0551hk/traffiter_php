@@ -1,4 +1,5 @@
 <?php
+session_start();
   require_once __DIR__ . '/vendor/autoload.php';
   require_once __DIR__. '/interface1.php';
   $fb = new Facebook\Facebook([
@@ -10,8 +11,25 @@
   $helper = $fb->getRedirectLoginHelper();
   
   $permissions = ['email'];
-  $loginUrl = $helper->getLoginUrl('https://traffiter.com/fb-callback.php', $permissions);
+  $loginUrl = $helper->getLoginUrl('https://www.traffiter.com/fb-callback.php', $permissions);
   
-  echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+?>
+
+<section class="sections">
+  <div class="container">
+    <div class="row">
+      <div class="main_contact whitebackground">
+          <div class="contact_content">
+            <div class="col-md-12">
+              <?php echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>'; ?>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<?php
+  
   require_once __DIR__. '/interface2.php';
 ?>
