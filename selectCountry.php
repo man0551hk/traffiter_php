@@ -1,5 +1,5 @@
 <?php
-require_once('interface1.php')
+require_once __DIR__ . '/interface1.php';
 ?>
 <script>
   $( function() {   
@@ -13,7 +13,6 @@ require_once('interface1.php')
           },
           success: function( data ) {
             response($.map(data, function (value, key) {
-                
                 return {
                     label: value.countryNameTc,
                     value: value.countryID
@@ -27,7 +26,14 @@ require_once('interface1.php')
         $("#country_id").val(ui.item.value);
         $("#keywords").val(ui.item.label);
       }
+    }).click(function() {
+      $(this).autocomplete("search", " ");
     });
+
+    // $( "#keywords" ).on( "click", function() {
+    //   alert( 'a');
+    // });
+   
   } );
 </script>
 
@@ -63,5 +69,5 @@ require_once('interface1.php')
   </div>
 </header>
 <?php
-require_once('interface2.php')
+require_once __DIR__ . '/interface2.php';
 ?>

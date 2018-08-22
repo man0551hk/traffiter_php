@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Soft-Tect Free Landing Page</title>
+        <title>Tradffiti</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -49,20 +49,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="assets/images/logo.png?v1" alt="Logo" /></a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/images/logo.png?v1" alt="Logo" /></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#home">Home</a></li>
-                        <li><a href="#features">PRODUCT</a></li>
-                        <li><a href="#service">Service</a></li>
+                        <li class="active"><a href="index.php">Home</a></li>
+                        <li><a href="selectCountry.php">Plan Trip</a></li>
+                        <!-- <li><a href="#service">Service</a></li>
                         <li><a href="#price">PRICE</a></li>
                         <li><a href="#business">Business</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li class="login"><a href="#">Sign In</a></li>
+                        <li><a href="#contact">Contact</a></li> -->
+                        <li class="login"><a href="signin.php">Sign In</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->

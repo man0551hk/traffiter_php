@@ -6,30 +6,20 @@
                         <div class="col-md-8 col-sm-12 col-xs-12">
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="menu-item">
-                                    <h5>Quick Links</h5>
-                                    <ul>
-                                        <li>POWER BI DESKTOP</li>
-                                        <li>MOBILE</li>
-                                        <li>SEE ALL DOWNLOADS</li>
-                                        <li>POWER BI DESKTOP</li>
-                                        <li>MOBILE</li>
-                                        <li>SEE ALL DOWNLOADS</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="menu-item">
                                     <h5>Legal</h5>
                                     <ul>
-                                        <li>PRIVACY & COOKIES</li>
-                                        <li>TERMS OF USE</li>
-                                        <li>TRADEMARKS</li>
+                                        <li><a href = 'privacy.php'>PRIVACY & COOKIES</a></li>
+                                        <li><a href = 'privacy.php'>TERMS OF USE</a></li>
+                                        <li><a href = 'privacy.php'>TRADEMARKS</a></li>
                                     </ul>
-                                </div>
+                                </div>                               
                             </div>
 
-                            <div class="col-md-4 col-sm-6 col-xs-12">
+                            <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+
+                            </div> -->
+
+                            <!-- <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="menu-item">
                                     <h5>Information</h5>
                                     <ul>
@@ -40,7 +30,7 @@
                                         <li>PYRAMID ANALYTICS</li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="col-md-4 col-sm-6 col-xs-12">

@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/interface1.php';
+?>
 <meta charSet="utf-8"/>
 <b>私隱政策</b>
 <br/>
@@ -157,3 +160,7 @@ COOKIE選擇<br/>
 <br/>
 © Traffiti Limited.<br/>
 2018年8月更新
+
+<?php
+require_once __DIR__ . '/interface2.php'; 
+?>

@@ -1,5 +1,6 @@
 <?php
-    require_once __DIR__ . '/vendor/autoload.php';
+  require_once __DIR__ . '/vendor/autoload.php';
+  require_once __DIR__. '/interface1.php';
   $fb = new Facebook\Facebook([
     'app_id' => '1558355577612796', // 把 {app_id} 換成你的應用程式編號
     'app_secret' => '3b791c12364219428b76909e95391f5d', // 把 {app_secret} 換成你的應用程式密鑰
@@ -12,5 +13,5 @@
   $loginUrl = $helper->getLoginUrl('https://traffiter.com/fb-callback.php', $permissions);
   
   echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
-
-  ?>
+  require_once __DIR__. '/interface2.php';
+?>
