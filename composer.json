@@ -1,5 +1,6 @@
 {
     "require": {
-        "facebook/graph-sdk": "^5.6"
+        "facebook/graph-sdk": "^5.6",
+        "nabil1337/case-helper": "^0.1.0"
     }
 }

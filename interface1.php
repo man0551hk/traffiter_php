@@ -45,7 +45,38 @@ if ($_SERVER['SERVER_NAME'] === 'localhost')
         <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+        <script>
+        function addFavorite(locationID, userID) 
+        {
+            if (userID == 0) {
+                window.location = 'sigin.php';
+            } 
+            else {
+                $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "https://<?php echo $apiDomain;?>/saveBookmark.php",
+                data: {
+                    locationID: locationID,
+                    userID: userID
+                },
+                success: function( data ) {
+                    $( "#" + locationID ).remove();
+                    $( "#content" + locationID ).append('<i class="fa fa-heart"></i>');
+                }
+                }); 
+            }
+        }
+        </script>
+        <style>
+            .heart:hover .fa-heart-o,
+            .heart .fa-heart {
+                display: none;
+            }
+            .heart:hover .fa-heart {
+                display: inline;
+            }            
+        </style>
     </head>
     <body>
         <!--[if lt IE 8]>

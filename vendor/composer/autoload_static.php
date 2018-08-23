@@ -15,12 +15,25 @@ class ComposerStaticInit3c9ad1e861ff56cfb6c865b6ed3eb38d
         array (
             'Facebook\\' => 9,
         ),
+        'C' => 
+        array (
+            'CaseHelper\\Test\\' => 16,
+            'CaseHelper\\' => 11,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Facebook\\' => 
         array (
             0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
+        ),
+        'CaseHelper\\Test\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nabil1337/case-helper/tests',
+        ),
+        'CaseHelper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nabil1337/case-helper/src',
         ),
     );
 

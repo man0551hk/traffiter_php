@@ -1,5 +1,6 @@
 <?php
-require_once('interface1.php')
+require_once __DIR__ . '/interface1.php';
+require_once __DIR__ . '/function.php';
 ?>
 <script>
   var totalDays = 5;
@@ -31,6 +32,16 @@ require_once('interface1.php')
   <section id="timetable" class="sections">
     <div class="cd-pricing-container cd-has-margins">
     
+      <?php
+      if (isset($_POST["country_id"]))
+      {
+          $countryID = $_POST["country_id"];
+          $data = array('lang' => $lang , 'userID' => $userID, 'countryID' => $countryID);
+          $result = CallAPI('POST', 'https://'.$apiDomain.'/locationDetail.php', $data);
+      }
+      ?>
+
+
       <a href = '#' onclick = "addDay()">Add Day</a>
       <a href = '#' onclick = "DeduceDay()">Deduce Day</a>
 
@@ -71,5 +82,5 @@ require_once('interface1.php')
     </div>
   </section>
 <?php
-require_once('interface2.php')
+    require_once __DIR__ . '/interface2.php'; 
 ?>

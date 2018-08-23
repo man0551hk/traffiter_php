@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0719d5c0f2ea9b27280d086fced50c4d",
+    "content-hash": "6d4dd6ed824e93c7a7539c8d4474337c",
     "packages": [
         {
             "name": "facebook/graph-sdk",
@@ -63,6 +63,37 @@
                 "sdk"
             ],
             "time": "2018-07-03T02:25:00+00:00"
+        },
+        {
+            "name": "nabil1337/case-helper",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nabil1337/case-helper.git",
+                "reference": "8cead5fe6470402d127ae0d759168f9778078992"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nabil1337/case-helper/zipball/8cead5fe6470402d127ae0d759168f9778078992",
+                "reference": "8cead5fe6470402d127ae0d759168f9778078992",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CaseHelper\\": "src/",
+                    "CaseHelper\\Test\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Easily convert between camelCase, PascalCase, kebab-case, snake_case, SCREAMING_SNAKE_CASE, Train-Case, and string case!",
+            "time": "2014-12-06T02:33:17+00:00"
         }
     ],
     "packages-dev": [],

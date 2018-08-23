@@ -14,37 +14,9 @@ require_once __DIR__ . '/function.php';
 .wf-column {
     float: left;
 }
-.heart:hover .fa-heart-o,
-.heart .fa-heart {
-    display: none;
-}
-.heart:hover .fa-heart {
-    display: inline;
-}
+
 </style>
-<script>
-function addFavorite(locationID, userID) 
-{
-  if (userID == 0) {
-    window.location = 'sigin.php';
-  } 
-  else {
-    $.ajax({
-      dataType: "json",
-      type: "POST",
-      url: "https://<?php echo $apiDomain;?>/saveBookmark.php",
-      data: {
-        locationID: locationID,
-        userID: userID
-      },
-      success: function( data ) {
-        $( "#" + locationID ).remove();
-        $( "#content" + locationID ).append('<i class="fa fa-heart"></i>');
-      }
-    }); 
-  }
-}
-</script>
+
 <section id="features" class="sections">
   <div class="container">
     <div class="wf-container">
@@ -55,7 +27,7 @@ function addFavorite(locationID, userID)
           $jsonResult = json_decode($result );
           foreach ($jsonResult as $homepageGrid) {
             echo '<div class="wf-box" style = "padding:5px">'.
-                '<a href = "">'.
+                '<a href = "locationDetail.php?locationID='.$homepageGrid->locationID.'">'.
                 '<img src="' . $homepageGrid->image .'">'.
                 '</a>'.
                 '<div class="content" id = "content'. $homepageGrid->locationID.'">' .
@@ -65,8 +37,8 @@ function addFavorite(locationID, userID)
                 $homepageGrid->areaName. ' '.
                 $homepageGrid->districtName.
                 '</p>';
-            if ( $homepageGrid->bookmark_id > 0) {
-              echo '<i class="fa fa-heart-o"></i>';
+            if ( $homepageGrid->bookmarkID > 0) {
+              echo '<i class="fa fa-heart"></i>';
             } else {
               echo '<a href = "javascript:addFavorite(' . $homepageGrid->locationID . ','. $userID .')" class = "heart" id = "'.$homepageGrid->locationID.'">'.
               '<i class="fa fa-heart-o"></i>'.
