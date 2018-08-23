@@ -1,3 +1,17 @@
+<?php 
+session_start();
+require_once __DIR__ . '/config.php';
+$userID = 0;
+$lang = "tc";
+if (isset($_SESSION["userID"]))
+{
+    $userID = $_SESSION["userID"];
+}
+if ($_SERVER['SERVER_NAME'] === 'localhost')
+{
+    $userID = 1;
+}
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -6,7 +20,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Tradffiti</title>
+        <title>Traffiti</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -62,7 +76,19 @@
                         <li><a href="#price">PRICE</a></li>
                         <li><a href="#business">Business</a></li>
                         <li><a href="#contact">Contact</a></li> -->
-                        <li class="login"><a href="signin.php">Sign In</a></li>
+                        <?php
+                            if (isset($_SESSION['userID']) && isset($_SESSION['username'])) {
+                                ?>
+                                <li><a href="member.php"><?php echo $_SESSION['username'];?></a></li>   
+                                <?php
+                            } 
+                            else {
+                                ?>
+                                <li><a href="sigin.php">Sign In</a></li>   
+                                <?php
+                            }
+                        ?>
+                        
                     </ul>
 
                 </div><!-- /.navbar-collapse -->

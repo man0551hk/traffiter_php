@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/function.php';
+require_once __DIR__ . '/config.php';
 $app_id = '1558355577612796'; // 把 {app_id} 換成你的應用程式編號
 $app_secret = '3b791c12364219428b76909e95391f5d';  // 把 {app_secret} 換成你的應用程式密鑰
 $fb = new Facebook\Facebook([
@@ -36,45 +38,65 @@ $fb = new Facebook\Facebook([
     }
     exit;
   }
-  
-  // Logged in
-  // echo '<h3>Access Token</h3>';
-  
-  // The OAuth 2.0 client handler helps us manage access tokens
+
   $oAuth2Client = $fb->getOAuth2Client();
-  
-  // Get the access token metadata from /debug_token
+
   $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-  // echo '<h3>Metadata</h3>';
-  // var_dump($tokenMetadata);
-  
-  // Validation (these will throw FacebookSDKException's when they fail)
   $tokenMetadata->validateAppId($app_id); // Replace {app-id} with your app id
-  // If you know the user ID this access token belongs to, you can validate it here
-  //$tokenMetadata->validateUserId('123');
   $tokenMetadata->validateExpiration();
-  
+  $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,birthday,location,picture', $accessToken);
+  $result = $response->getDecodedBody();
+
+  $id = $result['id'];
+  $first_name = $result['first_name'];
+  $last_name = $result['last_name'];
+  $email = $result['email'];
+  //$data = 'facebook_id='.$id.'&first_name='.$first_name.'&last_name='.$last_name.'&email='.$email;
+  echo $id.'<br/>';
+  echo $first_name.'<br/>';
+  echo $last_name.'<br/>';
+  echo $email.'<br/>';
+
+  // CallAPI('POST', 'https://'.$apiDomain.'/saveUser.php', $data );
+
+  $url = 'https://'.$apiDomain.'/saveUser.php';
+  $data = array('facebook_id' => $id , 'first_name' => $first_name, 'last_name' => $last_name, 'email' => $email);
+
+  // use key 'http' even if you send the request to https://...
+  $options = array(
+      'http' => array(
+          'method'  => 'POST',
+          'content' => http_build_query($data)
+      )
+  );
+  $context  = stream_context_create($options);
+  $result = file_get_contents($url, false, $context);
+  if ($result === FALSE) {
+
+  } else {
+    $decodeResult = json_decode($result);
+    print_r($decodeResult);
+    $userID = $decodeResult->userID;
+    // $userID = $decodeResult["userID"];
+    // echo $userID;
+    $_SESSION['userID'] = $userID;
+    $_SESSION['username'] = $first_name. ' ' . $last_name;
+  }
+
+
+
   if (! $accessToken->isLongLived()) {
-    // Exchanges a short-lived access token for a long-lived one
     try {
       $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
       echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
       exit;
     }
-  
-    echo '<h3>Long-lived</h3>';
     // var_dump($accessToken->getValue());
-    print_r ($accessToken->getValue());
-    print_r ($result);
-
-    // $response = $fb->get('/me?locale=en_US&fields=name,email');
-    // $userNode = $response->getGraphUser();
-    // var_dump(
-    //   $userNode->getField('email'), $userNode['email']
-    // );
   }
   
   $_SESSION['fb_access_token'] = (string) $accessToken;
-
-?>
+ 
+  header("Location: member.php");
+  die();
+  ?>
