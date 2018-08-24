@@ -2,6 +2,7 @@
 require_once __DIR__ . '/interface1.php';
 require_once __DIR__ . '/function.php';
 ?>
+
 <script>
   var totalDays = 5;
   function addDay () {
@@ -31,14 +32,26 @@ require_once __DIR__ . '/function.php';
 </script>
   <section id="timetable" class="sections">
     <div class="cd-pricing-container cd-has-margins">
-    
+
       <?php
+      
       if (isset($_POST["country_id"]))
       {
           $countryID = $_POST["country_id"];
           $data = array('lang' => $lang , 'userID' => $userID, 'countryID' => $countryID);
-          $result = CallAPI('POST', 'https://'.$apiDomain.'/locationDetail.php', $data);
-      }
+          $result = CallAPI('POST', 'https://'.$apiDomain.'/getBookmark.php', $data);
+         
+          if ($result !== FALSE) {
+            $jsonResult = json_decode($result);
+            
+            foreach($jsonResult as $bookmark) {
+              echo "<div id = '".$bookmark->locationID."' style = 'padding'>";
+              echo "<img src = '".$bookmark->image."' width = '60px;'>";
+              echo $bookmark->name . ' ' .  $bookmark->district;
+              echo "</div>";
+            }
+          }
+      } 
       ?>
 
 

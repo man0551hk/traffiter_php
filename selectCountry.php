@@ -24,15 +24,12 @@ require_once __DIR__ . '/interface1.php';
       select: function( event, ui ) {
         event.preventDefault();
         $("#country_id").val(ui.item.value);
+        console.log($("#country_id").val());
         $("#keywords").val(ui.item.label);
       }
     }).click(function() {
       $(this).autocomplete("search", " ");
     });
-
-    // $( "#keywords" ).on( "click", function() {
-    //   alert( 'a');
-    // });
    
   } );
 </script>
@@ -50,12 +47,11 @@ require_once __DIR__ . '/interface1.php';
                   <div class="home-contact">
                     <div class="input-group">
                       <form action = "timeTablePlanning.php" method = "POST">
-                      <div class="ui-widget">
-                      <input type="text" id = "keywords" class="form-control" placeholder="Country Name">
-                      
-                      <input type="submit" class="form-control" value="Start Planning">
-                      </div>
-                      <input type="hidden" id = "country_id">
+                        <div class="ui-widget">
+                          <input type="text" id = "keywords" class="form-control" placeholder="Country Name">
+                          <input type="hidden" id = "country_id" name = "country_id" value = "1" />
+                          <input type="submit" class="form-control" value="Start Planning" />
+                        </div>
                       </form>
                     </div><!-- /input-group -->
                   </div>
